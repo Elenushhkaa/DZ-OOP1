@@ -1,0 +1,46 @@
+int annagram(string str1, string str2)
+{
+    char[] str1_mas_c = new char[256];
+    char[] str2_mas_c = new char[256];
+   
+    for (int i = 0; i < str1.Length; i++)
+    {
+        str1_mas_c[i] = str1[i];
+    }
+    
+    Array.Sort(str1_mas_c);
+    
+    for (int i = 0; i < str2.Length; i++)
+    {
+        str2_mas_c[i] = str2[i];
+    }
+   
+    Array.Sort(str2_mas_c);
+
+    int k = 0;
+    for (int i = 0; i < str1_mas_c.Length; i++)
+    {
+        if (str1_mas_c[i] != str2_mas_c[i])
+        {
+            k++;
+
+        }
+    }
+    for (int i = 0; i < str2_mas_c.Length; i++)
+    {
+        if (str1_mas_c[i] != str2_mas_c[i])
+        {
+            k++;
+
+        }
+    }
+    return k;
+}
+
+Console.WriteLine("Введите два слова для проверки: ");
+string? str1 = Console.ReadLine();
+string? str2 = Console.ReadLine();
+if (annagram(str1, str2) == 0)
+    Console.WriteLine("yes");
+else
+    Console.WriteLine("no");
